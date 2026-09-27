@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Machine-readable overview for LLMs and agents
+# /llms.txt
+# /.well-known/agentmart.json

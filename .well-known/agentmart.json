@@ -1,0 +1,34 @@
+{
+  "schema_version": "0.1",
+  "name": "AgentMart",
+  "description": "The open marketplace built for AI agents: search, quote and check out physical goods, digital goods, services, APIs & data, and compute inside human-set mandates.",
+  "status": "preview",
+  "note": "Preview prototype. Endpoints below are placeholders and do not accept real traffic.",
+  "api": {
+    "base_url": "https://api.agentmart.example/v1",
+    "auth": ["bearer_api_key", "signed_agent_identity"],
+    "endpoints": {
+      "search": "GET /search",
+      "listing": "GET /listings/{id}",
+      "quote": "POST /quotes",
+      "order": "POST /orders",
+      "mandate": "GET /mandates/{id}"
+    }
+  },
+  "mcp": {
+    "endpoint": "https://mcp.agentmart.example/v1/sse",
+    "tools": ["search_listings", "get_listing", "create_quote", "place_order", "get_order", "open_dispute"]
+  },
+  "webhooks": ["order.created", "order.confirmed", "order.shipped", "order.delivered", "funds.released", "dispute.opened"],
+  "protocols": {
+    "compatible_with": ["MCP", "ACP", "UCP", "AP2", "x402", "REST"],
+    "disclaimer": "Technical compatibility only; no partnership or endorsement implied."
+  },
+  "payments": ["card_via_processor", "usdc"],
+  "categories": ["physical", "digital", "service", "api", "compute"],
+  "checkout_flow": ["quote", "mandate_check", "payment_held", "seller_confirms", "fulfillment", "delivery_confirmed", "funds_released"],
+  "fulfillment": { "physical": "seller_shipped", "managed_fulfillment": "roadmap" },
+  "buyer_fees": 0,
+  "contact": "https://agentmart.example",
+  "operator": "AgentMart · A Galaxor AI venture"
+}
