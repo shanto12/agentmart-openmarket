@@ -1,0 +1,17 @@
+name: Deploy to Netlify
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Deploy to agentmart-openmarket.netlify.app
+        run: npx -y @netlify/mcp@latest --site-id 3d8bedac-753a-41e3-9c13-ea9da8984165 --proxy-path "$NETLIFY_DEPLOY_PROXY"
+        env:
+          NETLIFY_DEPLOY_PROXY: ${{ secrets.NETLIFY_DEPLOY_PROXY }}
